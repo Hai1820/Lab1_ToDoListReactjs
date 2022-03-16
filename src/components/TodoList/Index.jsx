@@ -4,16 +4,25 @@ import classNames from "classnames";
 import { useState } from "react";
 export default function ToDoList({ toDoList, handleApp, handleCompelete }) {
   const [value, setValue] = useState();
-
   const _handleApp = () => {
     handleApp(value);
     setValue("");
   };
   const _onKeyUp = (ev) => {
     if (ev.key == "Enter") {
-      handleApp();
+      /*
+      * Lỗi: khi enter gọi hàm _handleApp
+      */
+      // handleApp();
+
+      /*
+      * Chỉnh sửa
+      */
+      _handleApp();
+
     }
   };
+  console.log('toDoList :>> ', toDoList);
   return (
     <div className={style.ToDoList}>
       <div className="input-group">

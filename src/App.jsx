@@ -12,6 +12,12 @@ function App() {
   useEffect(() => {
     localStorage.setItem(TODO_APP_KEY_STORAGE, JSON.stringify(toDoList));
   }, [toDoList]);
+
+  /*
+   * Nên đặt tên function có ý nghĩa thực thi 
+   * => handleAdd: (tốt)
+   * => handleApp: (không tốt)
+   */
   function handleApp(value) {
     setToDoList([
       { id: Date.now + "-" + Math.random(), name: value },
@@ -20,7 +26,15 @@ function App() {
   }
   const handleComplete = (task) => {
     task.isCompleted = true;
-    setToDoList(...toDoList);
+    /*
+     * Lỗi: khi muốn dùng spread syntax(...) để clone một array phải có [], vd: [...toDoList]
+     */
+    // setToDoList(...toDoList);
+
+    /*
+     * Chỉnh sửa
+     */
+    setToDoList([...toDoList]);
   };
   return (
     <div className="App">
