@@ -1,10 +1,13 @@
 import React from "react";
 
 export default function Header() {
+  const toggleMenu = () => {
+    document.body.classList.toggle("menu-is-show");
+  };
   return (
     <header id="header">
       <div className="wrap">
-        <div className="menu-hambeger">
+        <div className="menu-hambeger" onClick={toggleMenu}>
           <div className="button">
             <span />
             <span />
