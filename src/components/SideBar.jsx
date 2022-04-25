@@ -10,19 +10,29 @@ export default function SideBar() {
       <nav className="nav">
         <ul>
           <li className="li_login">
-            <NavLink to="/dang-nhap">Đăng ký / Đăng nhập</NavLink>
+            <NavLink onClick={close} to="/dang-nhap">
+              Đăng ký / Đăng nhập
+            </NavLink>
           </li>
           <li className="active">
-            <NavLink to="/">Trang chủ</NavLink>
+            <NavLink onClick={close} to="/">
+              Trang chủ
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/thanh-vien">CFD Team</NavLink>
+            <NavLink onClick={close} to="/thanh-vien">
+              CFD Team
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/khoa-hoc">Khóa Hoc</NavLink>
+            <NavLink onClick={close} to="/khoa-hoc">
+              Khóa Hoc
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/hop-tac">Liên Hệ</NavLink>
+            <NavLink onClick={close} to="/hop-tac">
+              Liên Hệ
+            </NavLink>
           </li>
         </ul>
       </nav>

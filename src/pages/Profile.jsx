@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, Navigate, NavLink, Outlet } from "react-router-dom";
 import Course from "./Profile/ProfileCourse";
 import Info from "./Profile/Info";
@@ -6,23 +6,29 @@ import Project from "./Profile/Project";
 import Payment from "./Profile/Payment";
 import Coin from "./Profile/Coin";
 import { useState } from "react";
+import { AuthContext } from "../context/AuthContext";
+import { useSelector } from "react-redux";
 export default function Profile({ path }) {
   // const [tab, setTab] = useState(0);
   // const onClick = (e) => {
   //   e.preventDefault;
   // };
   // const login = false;
+  // const { user } = useContext(AuthContext);
+  const { user } = useSelector((store) => store.auth);
+  const login = true;
+  if (!user) return <Navigate to="/" />;
   return (
     <main className="profile" id="main">
-      {/* {!login && <Navigate to="/" />} */}
+      {!login && <Navigate to="/" />}
       <section>
         <div className="top-info">
           <div className="avatar">
             {/* <span class="text">H</span> */}
-            <img src="img/avatar-lg.png" alt="" />
+            <img src={user.avatar} alt="" />
             <div className="camera" />
           </div>
-          <div className="name">trần nghĩa</div>
+          <div className="name">{user.name}</div>
           <p className="des">Thành viên của team CFD1-OFFLINE</p>
         </div>
         <div className="container">
